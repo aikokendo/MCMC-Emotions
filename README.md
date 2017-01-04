@@ -20,6 +20,6 @@ Implement a device/system diagnosis system to infer the unknown fault hypothesis
 
 ## Project Members
 
-* 亞琳娜
-* 林文智
+* Alejandra Meraz
+* Luis Robles
 * 蔡洁诗
