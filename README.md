@@ -9,7 +9,7 @@ Implement a device/system diagnosis system to infer the unknown fault hypothesis
 *   Implement the MCMC algorithm and simulate the conditional Bayesian probability inference by sampling given evidence input as facts known in the domain.
 *   Evaluate your BBN to see how accurate the diagnosis hypothesis with respect to various evidence conditions observed
 
- ## Dependencies
+## Dependencies
 
 * Python 3.4.4
 
