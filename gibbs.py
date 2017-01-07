@@ -8,7 +8,7 @@ class Gibbs:
     def gibbs_ask(self,x,e,bn,N):
         #returns an estimate of P(x|e)
         for i in range(N):
-            #create uniform random sample to select a Zj per iteration xD
+            #create uniform random sample to select a Zj per iteration
             x = [i for i in range(10)] #to change to size of BN - size of Evidence
             shuffle(x)
             for z in x:
