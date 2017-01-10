@@ -25,7 +25,6 @@ class Gibbs:
                     result[1] = result[1] + 1
                 else:
                     result[0] = result[0] + 1
-
         total = result[0] + result[1]
         normalizedFalse = result[0]/total
         normalizedTrue = result[1]/total
@@ -36,5 +35,14 @@ class Gibbs:
         #P(x given mb(X)) = P(x tal que parents(X)) multiplied by the multiplication of all children Z with formula P(Z given parents(Z))
         probParent = bn.get_prob(z)
         probChild =  bn.get_prob_children(z)
-        return True if probParent * probChild > 0.5 else False
+        return  bn.def_new_state(probParent*probChild, z)
+
+
+    def formatted_result(self,x,e,bn,N):
+        result = self.gibbs_ask(x,e,bn,N)
+        text = "probability of '" + bn.nodes[x].label + "' given "
+        for item in e:
+            text += item[0] + "=" + str(e[item]) + ", "
+        text = text + " is: " + str(result)
+        return text
 

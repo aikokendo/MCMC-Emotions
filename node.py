@@ -41,7 +41,7 @@ class Node:
         #as the current value of parents
         #no parents
         if self.parents is None:
-            return True if self.probability_table[0]['prob'][0] > 0.5 else False
+            return self.probability_table[0]['prob'][0]
         else:
             #hardcoding 4 levels
             for node in self.parents:

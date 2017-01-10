@@ -32,17 +32,26 @@ class Graph:
         return mNodes
 
     def get_prob(self,node):
-        return self.nodes[node].get_probability()
+        if self.get_state(node):
+            return self.nodes[node].get_probability()
+        else:
+            return 1 - self.nodes[node].get_probability()
 
     def get_prob_children(self,node):
         prob = 1
         if self.nodes[node].children is not None:
             for node in self.nodes[node].children:
-                prob = prob * node.get_probability()
+                if node.current_state:
+                    prob = prob * node.get_probability()
+                else:
+                    prob = prob * (1 - node.get_probability())
         return prob
 
     def set_state(self,state,node):
         self.nodes[node].current_state = state
+
+    def get_state(self,node):
+        return self.nodes[node].current_state
 
     def print_nodes(self):
         for node in self.nodes:
@@ -57,3 +66,9 @@ class Graph:
         for node in self.nodes:
             if self.nodes[node].label == z:
                 self.nodes[node].set_prob_table(table)
+
+    def def_new_state(self,true_prob, current_state):
+        if true_prob >= 0.5:
+            return self.get_state(current_state)
+        else:
+            return  not self.get_state(current_state)
