@@ -33,7 +33,7 @@ class Gibbs:
 
     def mb(self,z,bn):
         #returns probability of Z in the markov blanket space in BN
-        #P(x tal que mb(X)) = P(x tal que parents(X)) multiplied by the multiplication of all children Z with formula P(Z tal que parents(Z))
+        #P(x given mb(X)) = P(x tal que parents(X)) multiplied by the multiplication of all children Z with formula P(Z given parents(Z))
         probParent = bn.get_prob(z)
         probChild =  bn.get_prob_children(z)
         return True if probParent * probChild > 0.5 else False
