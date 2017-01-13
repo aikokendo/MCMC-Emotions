@@ -373,9 +373,15 @@ ale_g = gibbs.Gibbs()
 #print('probability of Energized, given windy = False and sunny = True: ', ale_g.gibbs_ask('e',{'w':False,'s':False},g,10))
 
 
-print(ale_g.formatted_result('e',{'s':True,'w':True,'c':True,'r':True},g,10))
+print(ale_g.formatted_result('e',{'s':False,'w':True,'c':True,'r':False},g,1000))
+print(ale_g.formatted_result('p',{'s':False,'w':True,'c':True,'r':False},g,1000))
 
-#print(ale_g.formatted_result('e',{'s':True,'w':True,'c':True,'r':True},g,100))
+print(ale_g.formatted_result('e',{'s':False,'w':True,'c':True,'r':False,'p':False},g,1000))
+print(ale_g.formatted_result('p',{'s':False,'w':True,'c':True,'r':False,'e':False},g,1000))
 
-#print(ale_g.formatted_result('e',{'s':True,'w':True,'c':True,'r':True},g,1000))
-#print(ale_g.formatted_result('sp',{'s':True,'w':True,'m':False,'a':True},g,10))
+print(ale_g.formatted_result('e',{'s':False,'w':True,'c':True,'r':False,'p':False,'sp':True},g,1000))
+print(ale_g.formatted_result('p',{'s':False,'w':True,'c':True,'r':False,'e':False,'sp':True},g,1000))
+
+print(ale_g.formatted_result('e',{'s':False,'w':True,'c':True,'r':False,'p':False,'sp':True,'a':True},g,1000))
+print(ale_g.formatted_result('p',{'s':False,'w':True,'c':True,'r':False,'e':False,'sp':True,'a':True},g,1000))
+

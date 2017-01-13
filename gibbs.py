@@ -32,17 +32,20 @@ class Gibbs:
 
     def mb(self,z,bn):
         #returns probability of Z in the markov blanket space in BN
-        #P(x given mb(X)) = P(x tal que parents(X)) multiplied by the multiplication of all children Z with formula P(Z given parents(Z))
+        #P(x given mb(X)) = P(x given parents(X)) multiplied by the multiplication
+        # of all children Z with formula P(Z given parents(Z))
         probParent = bn.get_prob(z)
         probChild =  bn.get_prob_children(z)
-        return  bn.def_new_state(probParent*probChild, z)
+        return bn.def_new_state(probParent*probChild, z)
 
 
     def formatted_result(self,x,e,bn,N):
         result = self.gibbs_ask(x,e,bn,N)
-        text = "probability of '" + bn.nodes[x].label + "' given "
+        nodeLabels = {'s':'sunny','w':'windy','c':'cloudy','r':'rainy','e':'energized','p':'pleasant','sp':'sports',
+                      'co':'community','cl':'clubs','le':'learn','ar':'arts','st':'st','m':'male','a':'adult'}
+        text = "probability of '" +  nodeLabels[bn.nodes[x].label] + "' given "
         for item in e:
-            text += item[0] + "=" + str(e[item]) + ", "
+            text += nodeLabels[item[0]] + "=" + str(e[item]) + ", "
         text = text + " is: " + str(result)
         return text
 
