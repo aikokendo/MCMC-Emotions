@@ -39,13 +39,12 @@ class Gibbs:
         return bn.def_new_state(probParent*probChild, z)
 
 
-    def formatted_result(self,x,e,bn,N):
+    def get_result(self,x,e,bn,N):
         result = self.gibbs_ask(x,e,bn,N)
-        nodeLabels = {'s':'sunny','w':'windy','c':'cloudy','r':'rainy','e':'energized','p':'pleasant','sp':'sports',
+        nodeLabels = {'sp':'sports','s':'sunny','w':'windy','c':'cloudy','r':'rainy','e':'energized','p':'pleasant',
                       'co':'community','cl':'clubs','le':'learn','ar':'arts','st':'st','m':'male','a':'adult'}
         text = "probability of '" +  nodeLabels[bn.nodes[x].label] + "' given "
         for item in e:
             text += nodeLabels[item[0]] + "=" + str(e[item]) + ", "
         text = text + " is: " + str(result)
         return text
-

@@ -359,29 +359,19 @@ g.add_prob_table('st',[{'field': 'm', 'value': True, 'prob':
                                  }]
                             }]}])
 
+GibbsImplementation = gibbs.Gibbs()
 
-#g.print_graph()
-#g = graph.Graph()
-
-ale_g = gibbs.Gibbs()
-
-#print('probability of sunny, given windy = False: ', ale_g.gibbs_ask('s',{'w':False},g,10))
-#print('probability of energized, given windy = False: ', ale_g.gibbs_ask('e',{'w':False},g,10))
-#print('probability of Sport, given windy = False: ', ale_g.gibbs_ask('sp',{'w':False},g,10))
-#print('probability of Arts, given windy = True: ', ale_g.gibbs_ask('ar',{'w':True},g,10))
-#print('probability of Cloudy, given windy = False and Energized = True: ', ale_g.gibbs_ask('c',{'w':False,'e':True},g,10))
-#print('probability of Energized, given windy = False and sunny = True: ', ale_g.gibbs_ask('e',{'w':False,'s':False},g,10))
-
-
-print(ale_g.formatted_result('e',{'s':False,'w':True,'c':True,'r':False},g,1000))
-print(ale_g.formatted_result('p',{'s':False,'w':True,'c':True,'r':False},g,1000))
-
+print(GibbsImplementation.get_result('e',{'s':True,'w':False,'c':False,'r':False},g,100))
+print(GibbsImplementation.get_result('e',{'s':True,'w':False,'c':False,'r':False},g,1000))
+print(GibbsImplementation.get_result('e',{'s':True,'w':False,'c':False,'r':False},g,2000))
+print(GibbsImplementation.get_result('e',{'s':True,'w':False,'c':False,'r':False,'p':False},g,2000))
+print(GibbsImplementation.get_result('e',{'s':False,'w':False,'c':False,'r':True},g,3000))
+print(GibbsImplementation.get_result('e',{'s':False,'w':True,'c':False,'r':False},g,3000))
+print(GibbsImplementation.get_result('e',{'s':True,'w':False,'c':True,'r':False},g,3000))
+print(GibbsImplementation.get_result('e',{'s':True,'w':True,'c':False,'r':False},g,3000))
 print(ale_g.formatted_result('e',{'s':False,'w':True,'c':True,'r':False,'p':False},g,1000))
 print(ale_g.formatted_result('p',{'s':False,'w':True,'c':True,'r':False,'e':False},g,1000))
-
 print(ale_g.formatted_result('e',{'s':False,'w':True,'c':True,'r':False,'p':False,'sp':True},g,1000))
 print(ale_g.formatted_result('p',{'s':False,'w':True,'c':True,'r':False,'e':False,'sp':True},g,1000))
-
 print(ale_g.formatted_result('e',{'s':False,'w':True,'c':True,'r':False,'p':False,'sp':True,'a':True},g,1000))
 print(ale_g.formatted_result('p',{'s':False,'w':True,'c':True,'r':False,'e':False,'sp':True,'a':True},g,1000))
-
